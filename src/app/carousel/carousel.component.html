@@ -1,0 +1,17 @@
+<div class="carousel">
+  <div
+    class="slide"
+    *ngFor="let slide of slides; let i = index"
+    [@slideAnimation]="{
+      value: i == currentSlideIndex ? 'active' : 'inactive',
+      params: { duration: transitionDuration }
+    }"
+    (mouseenter)="stopAutoplay()"
+    (mouseleave)="startAutoplay()"
+  >
+    <img [src]="slide.imageUrl" alt="" />
+  </div>
+
+  <button class="prev-button" (click)="prevSlide()">&lt;</button>
+  <button class="next-button" (click)="nextSlide()">&gt;</button>
+</div>
